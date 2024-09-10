@@ -1,22 +1,9 @@
-import { useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { fetchUsers, selectUserStatus, selectUsers } from '../../features/users/usersSlice';
 import TableRow from '../TableRow/TableRow';
+import { TableProps } from './Table.types';
 
-const Table = () => {
-  const users = useAppSelector(selectUsers);
-  const userStatus = useAppSelector(selectUserStatus);
-
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    if (userStatus === 'idle') {
-      dispatch(fetchUsers());
-    }
-  }, [userStatus, dispatch]);
-
+const Table = ({ users }: TableProps) => {
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto rounded-lg">
       <table className="table table-zebra">
         <thead>
           <tr>
