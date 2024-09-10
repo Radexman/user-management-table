@@ -8,9 +8,9 @@ import { setupStore } from './app/store.ts';
 const store = setupStore();
 
 createRoot(document.getElementById('root')!).render(
-	<StrictMode>
-		<Provider store={store}>
-			<App />
-		</Provider>
-	</StrictMode>
+  <StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </StrictMode>
 );
