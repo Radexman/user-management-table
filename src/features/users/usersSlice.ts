@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import type { RootState } from '../../app/store';
 
-const url = import.meta.env.VITE_API_URL;
+// const url = import.meta.env.VITE_API_URL;
 
 // Define a type for the slice state
 interface UserState {
