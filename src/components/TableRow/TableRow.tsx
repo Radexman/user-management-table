@@ -4,7 +4,7 @@ const TableRow = ({ number, name, username, email, phone }: TableRowProps) => {
   return (
     <tr>
       <th>{number}</th>
-      <td>{name}</td>
+      <td className="font-semibold">{name}</td>
       <td>{username}</td>
       <td>{email}</td>
       <td>{phone}</td>

@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { fetchUsers } from '../../features/users/usersSlice';
-import { selectUserStatus, selectUsers } from '../../features/users/usersSlice';
+import { useFetchUsers } from '../../hooks/useFetchUsers';
 import Header from '../../components/Header/Header';
 import Table from '../../components/Table/Table';
 import Filter from '../../components/Filter/Filter';
@@ -9,20 +7,11 @@ import FailedFetch from '../../components/FailedFetch/FailedFetch';
 import Loading from '../../components/Loading/Loading';
 
 const Users = () => {
-  const userStatus = useAppSelector(selectUserStatus);
-  const users = useAppSelector(selectUsers);
+  const { users, userStatus } = useFetchUsers();
 
   const [filter, setFilter] = useState('');
   const [filterType, setFilterType] = useState('name');
   const [filteredUsers, setFilteredUsers] = useState(users);
-
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    if (userStatus === 'idle') {
-      dispatch(fetchUsers());
-    }
-  }, [userStatus, dispatch]);
 
   useEffect(() => {
     const newFilteredUsers = users.filter((user) => {

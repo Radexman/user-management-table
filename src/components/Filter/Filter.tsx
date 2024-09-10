@@ -1,19 +1,19 @@
 import { type FilterProps } from './Filter.types';
-import { FaMagnifyingGlass } from 'react-icons/fa6';
+import { FaMagnifyingGlass as GlassIcon } from 'react-icons/fa6';
 
 const Filter = ({ filter, filterType, setFilterType, setFilter }: FilterProps) => {
   return (
     <div className="p-4">
-      <div className="flex items-center justify-between">
-        <label className="input input-sm input-bordered flex items-center gap-2">
+      <div className="flex flex-col-reverse items-center justify-between gap-4 sm:flex-row">
+        <label className="input input-sm input-bordered flex w-[55vw] items-center gap-2 sm:w-auto">
           <input
             type="text"
             className="grow"
             placeholder="Filter"
             value={filter}
-            onChange={(e) => setFilter(e.target.value)}
+            onChange={(event) => setFilter(event.target.value)}
           />
-          <FaMagnifyingGlass />
+          <GlassIcon />
         </label>
         <div className="join join-horizontal border border-slate-500">
           <div className="join-item flex items-center justify-center p-1 px-4 font-sans text-sm font-semibold">
@@ -24,7 +24,7 @@ const Filter = ({ filter, filterType, setFilterType, setFilter }: FilterProps) =
             name="filter-buttons"
             className="btn join-item btn-sm"
             checked={filterType === 'name'}
-            onChange={(e) => setFilterType(e.target.value)}
+            onChange={(event) => setFilterType(event.target.value)}
             aria-label="Name"
             value="name"
           />
@@ -33,7 +33,7 @@ const Filter = ({ filter, filterType, setFilterType, setFilter }: FilterProps) =
             name="filter-buttons"
             className="btn join-item btn-sm"
             checked={filterType === 'username'}
-            onChange={(e) => setFilterType(e.target.value)}
+            onChange={(event) => setFilterType(event.target.value)}
             aria-label="Username"
             value="username"
           />
@@ -42,7 +42,7 @@ const Filter = ({ filter, filterType, setFilterType, setFilter }: FilterProps) =
             name="filter-buttons"
             className="btn join-item btn-sm"
             checked={filterType === 'email'}
-            onChange={(e) => setFilterType(e.target.value)}
+            onChange={(event) => setFilterType(event.target.value)}
             aria-label="Email"
             value="email"
           />
@@ -51,7 +51,7 @@ const Filter = ({ filter, filterType, setFilterType, setFilter }: FilterProps) =
             name="filter-buttons"
             className="btn join-item btn-sm"
             checked={filterType === 'phone'}
-            onChange={(e) => setFilterType(e.target.value)}
+            onChange={(event) => setFilterType(event.target.value)}
             aria-label="Phone"
             value="phone"
           />
