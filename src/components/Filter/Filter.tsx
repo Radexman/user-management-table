@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { type FilterProps } from './Filter.types';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 
-const Filter = ({ filter, filterType, setFilterType, setFilter }) => {
+const Filter = ({ filter, filterType, setFilterType, setFilter }: FilterProps) => {
   return (
     <div className="p-4">
       <div className="flex items-center justify-between">

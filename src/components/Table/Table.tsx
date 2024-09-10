@@ -1,5 +1,5 @@
+import { type TableProps } from './Table.types';
 import TableRow from '../TableRow/TableRow';
-import { TableProps } from './Table.types';
 
 const Table = ({ users }: TableProps) => {
   return (

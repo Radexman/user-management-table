@@ -12,11 +12,11 @@ const Users = () => {
   const userStatus = useAppSelector(selectUserStatus);
   const users = useAppSelector(selectUsers);
 
-  const dispatch = useAppDispatch();
-
   const [filter, setFilter] = useState('');
   const [filterType, setFilterType] = useState('name');
   const [filteredUsers, setFilteredUsers] = useState(users);
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (userStatus === 'idle') {
