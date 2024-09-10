@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>40/40</span>
+                <span class='fraction'>39/39</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.9% </span>
+                <span class="strong">88.88% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>10/11</span>
+                <span class='fraction'>8/9</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>40/40</span>
+                <span class='fraction'>39/39</span>
             </div>
         
             
@@ -118,14 +118,10 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -146,9 +142,9 @@
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">8x</span>
@@ -163,8 +159,8 @@
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -182,52 +178,50 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import type { RootState } from '../../app/store';
 &nbsp;
-const url = import.meta.env.VITE_API_URL;
-&nbsp;
 // Define a type for the slice state
 interface UserState {
-	users: User[];
-	status: 'idle' | 'loading' | 'succeeded' | 'failed';
-	error: string | null;
+  users: User[];
+  status: 'idle' | 'loading' | 'succeeded' | 'failed';
+  error: string | null;
 }
 &nbsp;
 // Define the initial state using that type
 const initialState: UserState = {
-	users: [],
-	status: 'idle',
-	error: null,
+  users: [],
+  status: 'idle',
+  error: null,
 };
 &nbsp;
 // Async thunk to fetch users
 export const fetchUsers = createAsyncThunk&lt;User[]&gt;('users/fetchUsers', async () =&gt; {
-	try {
-		const response = await axios.get(url);
-		// Validate response data using Zod
-		const validateUsers = usersSchema.parse(response.data);
-		return validateUsers;
-	} catch (error) {
-		throw error;
-	}
+  try {
+    const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+    // Validate response data using Zod
+    const validateUsers = usersSchema.parse(response.data);
+    return validateUsers;
+  } catch (error) {
+    throw error;
+  }
 });
 &nbsp;
 export const userSlice = createSlice({
-	name: 'users',
-	initialState,
-	reducers: {},
-	extraReducers: (builder) =&gt; {
-		builder
-			.addCase(fetchUsers.pending, (state) =&gt; {
-				state.status = 'loading';
-			})
-			.addCase(fetchUsers.fulfilled, (state, action: PayloadAction&lt;User[]&gt;) =&gt; {
-				state.status = 'succeeded';
-				state.users = action.payload;
-			})
-			.addCase(fetchUsers.rejected, (state, action) =&gt; {
-				state.status = 'failed';
-				state.error = action.error.<span class="branch-0 cbranch-no" title="branch not covered" >message || 'Failed to fetch users';</span>
-			});
-	},
+  name: 'users',
+  initialState,
+  reducers: {},
+  extraReducers: (builder) =&gt; {
+    builder
+      .addCase(fetchUsers.pending, (state) =&gt; {
+        state.status = 'loading';
+      })
+      .addCase(fetchUsers.fulfilled, (state, action: PayloadAction&lt;User[]&gt;) =&gt; {
+        state.status = 'succeeded';
+        state.users = action.payload;
+      })
+      .addCase(fetchUsers.rejected, (state, action) =&gt; {
+        state.status = 'failed';
+        state.error = action.error.<span class="branch-0 cbranch-no" title="branch not covered" >message || 'Failed to fetch users';</span>
+      });
+  },
 });
 &nbsp;
 export const selectUsers = (state: RootState) =&gt; state.users.users;
@@ -241,7 +235,7 @@ export default userSlice.reducer;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-09-10T09:33:10.986Z
+                at 2024-09-10T14:19:57.985Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
