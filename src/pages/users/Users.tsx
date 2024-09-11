@@ -30,7 +30,7 @@ const Users = () => {
   }, [filter, filterType, users]);
 
   return (
-    <div className="container h-screen rounded-lg shadow-2xl sm:h-auto">
+    <div className="container relative h-screen rounded-lg shadow-2xl sm:h-auto">
       <Header />
       <div className="mx-4 h-[1px] bg-slate-600" />
       <Filter
