@@ -48,7 +48,7 @@ const Table = ({ users }: TableProps) => {
             })}
           </div>
           {/* Display Table On Large Screen */}
-          <table className="table table-zebra hidden md:block">
+          <table className="table table-zebra hidden md:table">
             <thead>
               <tr>
                 <th>Number</th>

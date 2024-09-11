@@ -107,6 +107,7 @@ npm run coverage
 - [x] Display only loading spinner on page load, don't show no users found message
 - [x] Add toggle button for mobile
 - [ ] Change table into cards on mobile device
+- [ ] Style not found error page
 - [ ] Add favicon and meta tags
 - [x] Fix flickering effect on page load
 - [ ] Unit test dummy components
