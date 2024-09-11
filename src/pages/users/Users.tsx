@@ -8,7 +8,6 @@ import Loading from '../../components/Loading/Loading';
 
 const Users = () => {
   const { users, userStatus } = useFetchUsers();
-
   const [filter, setFilter] = useState('');
   const [filterType, setFilterType] = useState('name');
   const [filteredUsers, setFilteredUsers] = useState(users);

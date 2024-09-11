@@ -37,7 +37,7 @@ const Table = ({ users }: TableProps) => {
           </tbody>
         </table>
       )}
-      {users.length === 0 && (
+      {users.length === 0 && userStatus === 'succeeded' && (
         <div className="flex flex-col items-center justify-center py-6">
           <NoUserIcon size={50} />
           <p className="text-2xl">No users found</p>

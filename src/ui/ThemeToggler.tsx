@@ -1,6 +1,9 @@
 const ThemeToggler = () => {
   return (
-    <div>
+    <div
+      className="hidden sm:block"
+      data-testid="theme-toggler"
+    >
       <label className="grid cursor-pointer place-items-center">
         <input
           type="checkbox"

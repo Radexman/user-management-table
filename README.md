@@ -100,3 +100,17 @@ To generate a coverage report:
 ```bash
 npm run coverage
 ```
+
+## **To Do**
+
+- [x] Mobile layout improvements
+- [x] Display only loading spinner on page load, don't show no users found message
+- [ ] Add toggle button for mobile
+- [ ] Change table into cards on mobile device
+- [ ] Add favicon and meta tags
+- [ ] Fix flickering effect on page load
+- [ ] Unit test dummy components
+- [ ] Unit test smart components
+- [ ] Implement dark/light mode in local storage
+- [ ] Add to the table more data about users from JSONPlaceholder API
+- [ ] Add avatars from randomUser.me (optional)
