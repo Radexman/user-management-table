@@ -1,4 +1,4 @@
-import type { TableRowProps } from './TableRow.types';
+import type { TableRowProps } from './TableRow.type';
 
 const TableRow = ({ number, name, username, email, phone }: TableRowProps) => {
   return (

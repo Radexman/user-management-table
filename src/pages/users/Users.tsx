@@ -43,7 +43,7 @@ const Users = () => {
         {userStatus === 'loading' && <Loading />}
         {userStatus === 'failed' && <FailedFetch />}
       </div>
-      <Table users={filteredUsers} />
+      {userStatus === 'succeeded' && <Table users={filteredUsers} />}
     </div>
   );
 };

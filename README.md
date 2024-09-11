@@ -108,7 +108,7 @@ npm run coverage
 - [x] Add toggle button for mobile
 - [ ] Change table into cards on mobile device
 - [ ] Add favicon and meta tags
-- [ ] Fix flickering effect on page load
+- [x] Fix flickering effect on page load
 - [ ] Unit test dummy components
 - [ ] Unit test smart components
 - [x] Implement dark/light mode in local storage

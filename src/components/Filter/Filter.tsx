@@ -1,4 +1,4 @@
-import { type FilterProps } from './Filter.types';
+import { type FilterProps } from './Filter.type';
 import { FaMagnifyingGlass as GlassIcon } from 'react-icons/fa6';
 
 const Filter = ({ filter, filterType, setFilterType, setFilter }: FilterProps) => {

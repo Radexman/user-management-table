@@ -1,4 +1,4 @@
-import { type TableProps } from './Table.types';
+import { type TableProps } from './Table.type';
 import { useAppSelector } from '../../app/hooks';
 import { FaUserAltSlash as NoUserIcon } from 'react-icons/fa';
 import { selectUserStatus } from '../../features/users/usersSlice';
@@ -10,32 +10,71 @@ const Table = ({ users }: TableProps) => {
   return (
     <div className="overflow-x-auto rounded-lg">
       {userStatus === 'succeeded' && (
-        <table className="table table-zebra">
-          <thead>
-            <tr>
-              <th>Number</th>
-              <th>Name</th>
-              <th>Username</th>
-              <th>Email</th>
-              <th>Phone</th>
-            </tr>
-          </thead>
-          <tbody>
+        <>
+          {/* Display Collapsable Cards On Small Screen */}
+          <div className="mx-2 block space-y-2 md:hidden">
             {users.map((user) => {
               const { id, name, username, email, phone } = user;
               return (
-                <TableRow
+                <div
                   key={id}
-                  number={id}
-                  name={name}
-                  username={username}
-                  email={email}
-                  phone={phone}
-                />
+                  className="collapse collapse-arrow rounded-sm bg-base-200"
+                >
+                  <input
+                    type="radio"
+                    name="my-accordion-1"
+                    defaultChecked
+                  />
+                  <div className="collapse-title text-xl font-medium">{name}</div>
+                  <div className="collapse-content text-sm">
+                    <p>
+                      <b>Number:</b> {id}
+                    </p>
+                    <p>
+                      <b>Name:</b> {name}
+                    </p>
+                    <p>
+                      <b>Username:</b> {username}
+                    </p>
+                    <p>
+                      <b>Email:</b> {email}
+                    </p>
+                    <p>
+                      <b>Phone:</b> {phone}
+                    </p>
+                  </div>
+                </div>
               );
             })}
-          </tbody>
-        </table>
+          </div>
+          {/* Display Table On Large Screen */}
+          <table className="table table-zebra hidden md:block">
+            <thead>
+              <tr>
+                <th>Number</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Phone</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user) => {
+                const { id, name, username, email, phone } = user;
+                return (
+                  <TableRow
+                    key={id}
+                    number={id}
+                    name={name}
+                    username={username}
+                    email={email}
+                    phone={phone}
+                  />
+                );
+              })}
+            </tbody>
+          </table>
+        </>
       )}
       {users.length === 0 && userStatus === 'succeeded' && (
         <div className="flex flex-col items-center justify-center py-6">
