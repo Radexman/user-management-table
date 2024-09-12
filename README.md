@@ -79,7 +79,7 @@ cd user-management-table
 npm install
 ```
 
-3. Create a `.env` file in the root of the project with your local variables:
+3. Create a `.env` file in the root of the project with local variable:
 
 ```env
 VITE_API_URL='https://jsonplaceholder.typicode.com/users'
