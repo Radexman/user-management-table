@@ -19,7 +19,7 @@ const initialState: UserState = {
 
 export const fetchUsers = createAsyncThunk<User[]>('users/fetchUsers', async () => {
   try {
-    const response = await axios.get(url);
+    const response = await axios.get('https://jsonplaceholder.typicode.com/users');
     const validateUsers = usersSchema.parse(response.data);
     return validateUsers;
   } catch (error) {
