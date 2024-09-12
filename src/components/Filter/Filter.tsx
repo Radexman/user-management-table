@@ -9,7 +9,7 @@ const Filter = ({ filter, filterType, setFilterType, setFilter }: FilterProps) =
     if (inputRef.current) {
       inputRef.current.focus();
     }
-  }, []);
+  }, [filterType]);
 
   return (
     <div className="p-4">
