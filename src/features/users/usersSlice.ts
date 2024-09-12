@@ -3,8 +3,6 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import type { RootState } from '../../app/store';
 
-const url = import.meta.env.VITE_API_URL;
-
 interface UserState {
   users: User[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
