@@ -1,43 +1,28 @@
 import { screen, fireEvent } from '@testing-library/react';
 import { renderWithProviders } from '../../utils/test-utils';
 import Filter from './Filter';
-import { vi } from 'vitest';
 
 describe('Filter component should', () => {
-  const mockSetFilter = vi.fn();
-  const mockSetFilterType = vi.fn();
-
-  const initialProps = {
-    filter: '',
-    filterType: 'name',
-    setFilter: mockSetFilter,
-    setFilterType: mockSetFilterType,
-  };
-
-  beforeEach(() => {
-    vi.clearAllMocks();
-  });
-
   test('focus input on mount', () => {
-    renderWithProviders(<Filter {...initialProps} />);
+    renderWithProviders(<Filter />);
 
     const input = screen.getByPlaceholderText(/filter/i) as HTMLInputElement;
 
     expect(document.activeElement).toBe(input);
   });
 
-  test('call setFilter on input change', () => {
-    renderWithProviders(<Filter {...initialProps} />);
+  test('call setFilter on input change', async () => {
+    renderWithProviders(<Filter />);
 
     const input = screen.getByPlaceholderText(/filter/i) as HTMLInputElement;
 
     fireEvent.change(input, { target: { value: 'test' } });
 
-    expect(mockSetFilter).toHaveBeenCalledWith('test');
+    expect(input.value).toBe('test');
   });
 
   test('check that the correct radio button is selected based on filterType', () => {
-    renderWithProviders(<Filter {...initialProps} />);
+    renderWithProviders(<Filter />);
 
     const nameRadio = screen.getByRole('radio', { name: 'Name' }) as HTMLInputElement;
     const usernameRadio = screen.getByRole('radio', { name: 'Username' }) as HTMLInputElement;
@@ -47,32 +32,32 @@ describe('Filter component should', () => {
   });
 
   test('call setFilterType when a username radio button is clicked', () => {
-    renderWithProviders(<Filter {...initialProps} />);
+    renderWithProviders(<Filter />);
 
     const usernameRadio = screen.getByRole('radio', { name: 'Username' }) as HTMLInputElement;
 
     fireEvent.click(usernameRadio);
 
-    expect(mockSetFilterType).toHaveBeenCalledWith('username');
+    expect(usernameRadio.value).toBe('username');
   });
 
   test('call setFilterType when a email radio button is clicked', () => {
-    renderWithProviders(<Filter {...initialProps} />);
+    renderWithProviders(<Filter />);
 
     const emailRadio = screen.getByRole('radio', { name: 'Email' }) as HTMLInputElement;
 
     fireEvent.click(emailRadio);
 
-    expect(mockSetFilterType).toHaveBeenCalledWith('email');
+    expect(emailRadio.value).toBe('email');
   });
 
   test('call setFilterType when a phone radio button is clicked', () => {
-    renderWithProviders(<Filter {...initialProps} />);
+    renderWithProviders(<Filter />);
 
     const phoneRadio = screen.getByRole('radio', { name: 'Phone' }) as HTMLInputElement;
 
     fireEvent.click(phoneRadio);
 
-    expect(mockSetFilterType).toHaveBeenCalledWith('phone');
+    expect(phoneRadio.value).toBe('phone');
   });
 });

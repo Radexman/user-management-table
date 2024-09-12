@@ -1,11 +1,10 @@
 import { type TableProps } from './Table.type';
-import { useAppSelector } from '../../app/hooks';
+import { useFetchUsers } from '../../hooks/useFetchUsers';
 import { FaUserAltSlash as NoUserIcon } from 'react-icons/fa';
-import { selectUserStatus } from '../../features/users/usersSlice';
 import TableRow from '../TableRow/TableRow';
 
 const Table = ({ users }: TableProps) => {
-  const userStatus = useAppSelector(selectUserStatus);
+  const { userStatus } = useFetchUsers();
 
   return (
     <div className="overflow-x-auto rounded-lg">

@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useAppSelector } from '../../app/hooks';
+import { selectFilter, selectFilterType } from '../../features/filter/filterSlice';
 import { useFetchUsers } from '../../hooks/useFetchUsers';
 import Header from '../../components/Header/Header';
 import Table from '../../components/Table/Table';
@@ -8,37 +9,30 @@ import Loading from '../../components/Loading/Loading';
 
 const Users = () => {
   const { users, userStatus } = useFetchUsers();
-  const [filter, setFilter] = useState('');
-  const [filterType, setFilterType] = useState('name');
-  const [filteredUsers, setFilteredUsers] = useState(users);
+  const filter = useAppSelector(selectFilter);
+  const filterType = useAppSelector(selectFilterType);
 
-  useEffect(() => {
-    const newFilteredUsers = users.filter((user) => {
-      const searchTerm = filter.toLowerCase();
-      if (filterType === 'name') {
+  const filteredUsers = users.filter((user) => {
+    const searchTerm = filter.toLowerCase();
+    switch (filterType) {
+      case 'name':
         return user.name.toLowerCase().includes(searchTerm);
-      } else if (filterType === 'username') {
+      case 'username':
         return user.username.toLowerCase().includes(searchTerm);
-      } else if (filterType === 'email') {
+      case 'email':
         return user.email.toLowerCase().includes(searchTerm);
-      } else if (filterType === 'phone') {
+      case 'phone':
         return user.phone.toLowerCase().includes(searchTerm);
-      }
-      return false;
-    });
-    setFilteredUsers(newFilteredUsers);
-  }, [filter, filterType, users]);
+      default:
+        return false;
+    }
+  });
 
   return (
     <div className="container relative h-screen rounded-lg shadow-2xl sm:h-auto">
       <Header />
       <div className="mx-4 h-[1px] bg-slate-600" />
-      <Filter
-        filter={filter}
-        filterType={filterType}
-        setFilterType={setFilterType}
-        setFilter={setFilter}
-      />
+      <Filter />
       <div className="flex items-center justify-center">
         {userStatus === 'loading' && <Loading />}
         {userStatus === 'failed' && <FailedFetch />}

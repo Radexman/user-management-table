@@ -1,15 +1,28 @@
-import { useEffect, useRef } from 'react';
-import { type FilterProps } from './Filter.type';
+import { ChangeEvent, useEffect, useRef } from 'react';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import { setFilter, setFilterType, selectFilter, selectFilterType } from '../../features/filter/filterSlice';
 import { FaMagnifyingGlass as GlassIcon } from 'react-icons/fa6';
+import { FilterTypes } from '../../types/filter.type';
 
-const Filter = ({ filter, filterType, setFilterType, setFilter }: FilterProps) => {
+const Filter = () => {
+  const filter = useAppSelector(selectFilter);
+  const filterType = useAppSelector(selectFilterType);
   const inputRef = useRef<HTMLInputElement>(null);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
   }, [filterType]);
+
+  const handleFilterChange = (event: ChangeEvent<HTMLInputElement>) => {
+    dispatch(setFilter(event.target.value));
+  };
+
+  const handleFilterTypeChange = (event: ChangeEvent<HTMLInputElement>) => {
+    dispatch(setFilterType(event.target.value as FilterTypes));
+  };
 
   return (
     <div className="p-4">
@@ -21,7 +34,7 @@ const Filter = ({ filter, filterType, setFilterType, setFilter }: FilterProps) =
             placeholder="Filter"
             ref={inputRef}
             value={filter}
-            onChange={(event) => setFilter(event.target.value)}
+            onChange={handleFilterChange}
           />
           <GlassIcon />
         </label>
@@ -34,7 +47,7 @@ const Filter = ({ filter, filterType, setFilterType, setFilter }: FilterProps) =
             name="filter-buttons"
             className="btn join-item btn-xs sm:btn-sm"
             checked={filterType === 'name'}
-            onChange={(event) => setFilterType(event.target.value)}
+            onChange={handleFilterTypeChange}
             aria-label="Name"
             value="name"
           />
@@ -43,7 +56,7 @@ const Filter = ({ filter, filterType, setFilterType, setFilter }: FilterProps) =
             name="filter-buttons"
             className="btn join-item btn-xs sm:btn-sm"
             checked={filterType === 'username'}
-            onChange={(event) => setFilterType(event.target.value)}
+            onChange={handleFilterTypeChange}
             aria-label="Username"
             value="username"
           />
@@ -52,7 +65,7 @@ const Filter = ({ filter, filterType, setFilterType, setFilter }: FilterProps) =
             name="filter-buttons"
             className="btn join-item btn-xs sm:btn-sm"
             checked={filterType === 'email'}
-            onChange={(event) => setFilterType(event.target.value)}
+            onChange={handleFilterTypeChange}
             aria-label="Email"
             value="email"
           />
@@ -61,7 +74,7 @@ const Filter = ({ filter, filterType, setFilterType, setFilter }: FilterProps) =
             name="filter-buttons"
             className="btn join-item btn-xs sm:btn-sm"
             checked={filterType === 'phone'}
-            onChange={(event) => setFilterType(event.target.value)}
+            onChange={handleFilterTypeChange}
             aria-label="Phone"
             value="phone"
           />
