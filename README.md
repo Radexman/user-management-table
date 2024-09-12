@@ -77,21 +77,16 @@ cd user-management-table
 
 ```bash
 npm install
+yarn install
 ```
-
-3. Create a `.env` file in the root of the project with local variable:
-
-```env
-VITE_API_URL='https://jsonplaceholder.typicode.com/users'
-```
-
-4.  Run the development server:
+3.  Run the development server:
 
 ```bash
 npm run dev
+yarn dev
 ```
 
-5. Open the app in your browser at http://localhost:5173.
+4. Open the app in your browser at http://localhost:5173.
 
 ### **Running Tests**
 
@@ -99,18 +94,21 @@ To run the test suite:
 
 ```bash
 npm run test
+yarn test
 ```
 
 To generate a coverage report:
 
 ```bash
 npm run coverage
+yarn coverage
 ```
 
 To lint for the code adherance to the style guidleines:
 
 ```bash
 npm run lint
+yarn lint
 ```
 
 ## **Viewing Coverage Report in Browser**
@@ -119,6 +117,7 @@ After generating the coverage report with:
 
 ```bash
 npm run coverage
+yarn coverage
 ```
 
 You can view the detailed code coverage report in your browser:
