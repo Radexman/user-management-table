@@ -91,7 +91,7 @@ VITE_API_URL='https://jsonplaceholder.typicode.com/users'
 npm run dev
 ```
 
-4. Open the app in your browser at http://localhost:5173.
+5. Open the app in your browser at http://localhost:5173.
 
 ### **Running Tests**
 
