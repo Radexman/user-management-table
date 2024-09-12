@@ -7,8 +7,6 @@ import { setupStore } from '../../app/store';
 import MockAdapter from 'axios-mock-adapter';
 import axios from 'axios';
 
-const url = import.meta.env.VITE_API_URL;
-
 const mock = new MockAdapter(axios);
 
 describe('Users page should', () => {
@@ -52,7 +50,7 @@ describe('Users page should', () => {
       },
     ];
 
-    mock.onGet(url || '').reply(200, users);
+    mock.onGet('https://jsonplaceholder.typicode.com/users' || '').reply(200, users);
 
     await store.dispatch(fetchUsers());
 
@@ -117,7 +115,7 @@ describe('Users page should', () => {
       },
     ];
 
-    mock.onGet(url || '').reply(200, users);
+    mock.onGet('https://jsonplaceholder.typicode.com/users' || '').reply(200, users);
     await store.dispatch(fetchUsers());
 
     renderWithProviders(
@@ -138,7 +136,7 @@ describe('Users page should', () => {
 
   test('display error message on failed fetch', async () => {
     const store = setupStore();
-    mock.onGet(url || '').reply(500);
+    mock.onGet('https://jsonplaceholder.typicode.com/users' || '').reply(500);
 
     await store.dispatch(fetchUsers());
 
