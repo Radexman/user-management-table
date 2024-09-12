@@ -79,7 +79,13 @@ cd user-management-table
 npm install
 ```
 
-3. Run the development server:
+3. Create a `.env` file in the root of the project with your local variables:
+
+```env
+VITE_API_URL='https://jsonplaceholder.typicode.com/users'
+```
+
+4.  Run the development server:
 
 ```bash
 npm run dev

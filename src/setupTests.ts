@@ -5,6 +5,12 @@ import { cleanup } from '@testing-library/react';
 
 expect.extend(matchers);
 
+Object.defineProperty(import.meta, 'env', {
+  value: {
+    VITE_API_URL: 'https://jsonplaceholder.typicode.com/users',
+  },
+});
+
 afterEach(() => {
   cleanup();
 });

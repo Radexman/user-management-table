@@ -3,6 +3,8 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import type { RootState } from '../../app/store';
 
+const url = import.meta.env.VITE_API_URL;
+
 interface UserState {
   users: User[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
@@ -17,7 +19,7 @@ const initialState: UserState = {
 
 export const fetchUsers = createAsyncThunk<User[]>('users/fetchUsers', async () => {
   try {
-    const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+    const response = await axios.get(url);
     const validateUsers = usersSchema.parse(response.data);
     return validateUsers;
   } catch (error) {
