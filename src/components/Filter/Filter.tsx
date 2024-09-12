@@ -1,7 +1,16 @@
+import { useEffect, useRef } from 'react';
 import { type FilterProps } from './Filter.type';
 import { FaMagnifyingGlass as GlassIcon } from 'react-icons/fa6';
 
 const Filter = ({ filter, filterType, setFilterType, setFilter }: FilterProps) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
+
   return (
     <div className="p-4">
       <div className="flex flex-col-reverse items-center justify-between gap-4 sm:flex-row">
@@ -10,13 +19,14 @@ const Filter = ({ filter, filterType, setFilterType, setFilter }: FilterProps) =
             type="text"
             className="w-[61vw] grow sm:w-auto"
             placeholder="Filter"
+            ref={inputRef}
             value={filter}
             onChange={(event) => setFilter(event.target.value)}
           />
           <GlassIcon />
         </label>
         <div className="join join-horizontal border border-slate-500">
-          <div className="join-item flex items-center justify-center p-1 px-4 font-sans text-xs font-semibold">
+          <div className="join-item flex items-center justify-center p-1 px-4 font-sans text-xs font-semibold sm:text-sm">
             Filter by
           </div>
           <input

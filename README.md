@@ -101,17 +101,24 @@ To generate a coverage report:
 npm run coverage
 ```
 
-## **To Do**
+To lint for the code adherance to the style guidleines:
 
-- [x] Mobile layout improvements
-- [x] Display only loading spinner on page load, don't show no users found message
-- [x] Add toggle button for mobile
-- [ ] Change table into cards on mobile device
-- [ ] Style not found error page
-- [ ] Add favicon and meta tags
-- [x] Fix flickering effect on page load
-- [ ] Unit test dummy components
-- [ ] Unit test smart components
-- [x] Implement dark/light mode in local storage
-- [ ] Add to the table more data about users from JSONPlaceholder API
-- [ ] Add avatars from randomUser.me (optional)
+```bash
+npm run lint
+```
+
+## **Viewing Coverage Report in Browser**
+
+After generating the coverage report with:
+
+```bash
+npm run coverage
+```
+
+You can view the detailed code coverage report in your browser:
+
+1. Navigate to the coverage folder in the project directory.
+2. Open the index.html file located inside the coverage folder.
+3. If you're using VSCode, right-click the index.html file and select "Open with Live Server" to view the report in your browser.
+
+This provides a visual overview of the test coverage, making it easier to explore which lines of code are covered by tests.

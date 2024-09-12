@@ -18,7 +18,7 @@ const Table = ({ users }: TableProps) => {
               return (
                 <div
                   key={id}
-                  className="collapse collapse-arrow rounded-sm bg-base-200"
+                  className="collapse collapse-arrow rounded-sm bg-base-200 shadow-md"
                 >
                   <input
                     type="radio"
@@ -52,7 +52,7 @@ const Table = ({ users }: TableProps) => {
             <thead>
               <tr>
                 <th>Number</th>
-                <th>Name</th>
+                <th>Name & City</th>
                 <th>Username</th>
                 <th>Email</th>
                 <th>Phone</th>
