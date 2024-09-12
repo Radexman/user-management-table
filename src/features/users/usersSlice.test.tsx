@@ -3,8 +3,6 @@ import { setupStore } from '../../app/store';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
-const url = import.meta.env.VITE_API_URL;
-
 const mock = new MockAdapter(axios);
 
 describe('UserSlice should', () => {
@@ -46,7 +44,7 @@ describe('UserSlice should', () => {
         },
       },
     ];
-    mock.onGet(url).reply(200, users);
+    mock.onGet('https://jsonplaceholder.typicode.com/users').reply(200, users);
 
     await store.dispatch(fetchUsers());
 
@@ -57,7 +55,7 @@ describe('UserSlice should', () => {
   });
 
   test('should handle rejected fetchUsers', async () => {
-    mock.onGet(url).reply(500);
+    mock.onGet('https://jsonplaceholder.typicode.com/users').reply(500);
 
     await store.dispatch(fetchUsers());
 
