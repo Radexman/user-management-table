@@ -1,8 +1,7 @@
 # **User Management Table**
 
 ## **Overview**
-
-This project is a **User Management Table** built for a junior developer assignment. The app fetches users from the JSONPlaceholder API and displays them in a table with dynamic filtering options. The user can filter the table by name, username, email, or phone. The application also includes a dark mode toggler and has been thoroughly tested for reliability and accuracy.
+The app fetches users from the JSONPlaceholder API and displays them in a table with dynamic filtering options. The user can filter the table by name, username, email, or phone. The application also includes a dark mode toggler and has been thoroughly tested for reliability and accuracy.
 
 Before starting the development, I created a **hi-fidelity wireframe** using Figma to visualize the design and functionality of the application.
 
